@@ -1,14 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Match {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int count=0;
+		int r=0;
+		
+
+		System.out.println("Enter the number of consecutive losses you want to find");	
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(); /// number of win or loss to find
 		List <Result> finalTeam=new ArrayList<>();
 		List <Result> team=new ArrayList<>();
-		int [] res1= {1,1,0,0,1}; 
+		int [] res1= {1,1,0,0,1}; //1 stands for win 0 stands for loss
 		int [] res2= {1,0,0,1,1};
 		int [] res3= {1,0,1,0,0};
 		int [] res4= {1,1,0,1,0};	
@@ -61,20 +69,41 @@ for(Result res : team)
 		{
 			count=0;
 		}
-		if(count==2)
+		if(count==n)
 		{
 			finalTeam.add(res);
+			
 			break;
 		}
 		
 	}
 	
 }
+int totalTeam =0;
+float avg=0;
+
+
+
 for(Result res :finalTeam)
 	{
+		totalTeam=totalTeam+1;
+		avg=avg+res.getPoints();
 		System.out.println(res.getName());	
+		
 	}
+if(totalTeam!=0)
+{
+	System.out.println("Average is ->"+avg/totalTeam);
+}
+else 
+{
+	System.out.println("No Teams with consecutive losses");
+
+}
 	}
+
+
+	
 }
 class Result{
 	
@@ -106,4 +135,5 @@ public void setName(String name) {
 	this.name = name;
 }
 }
+
 
